@@ -1,0 +1,30 @@
+identity:
+  author: adheshsuryatej
+  name: suprsend
+  label:
+    en_US: SuprSend
+  description:
+    en_US: Send multi-channel notifications (email, SMS, push, in-app inbox, WhatsApp, Slack) and manage users, preferences and lists in SuprSend.
+  icon: icon.svg
+  tags:
+    - social
+    - business
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: API Key
+    placeholder:
+      en_US: Paste your SuprSend workspace API key
+    help:
+      en_US: In the SuprSend dashboard, go to Developers > API Keys and copy a key for the workspace you want to use (for example staging or production).
+    url: https://app.suprsend.com
+tools:
+  - tools/trigger_workflow.yaml
+  - tools/upsert_user.yaml
+  - tools/update_preference.yaml
+  - tools/add_user_to_list.yaml
+extra:
+  python:
+    source: provider/suprsend.py

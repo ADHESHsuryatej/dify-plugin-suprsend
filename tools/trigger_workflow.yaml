@@ -1,0 +1,66 @@
+identity:
+  name: trigger_workflow
+  author: adheshsuryatej
+  label:
+    en_US: Trigger Workflow
+description:
+  human:
+    en_US: Send a notification to a user by triggering a SuprSend workflow.
+  llm: Triggers a SuprSend notification workflow (by its slug) for one user, optionally passing template data, the user's emails or phone numbers, and a tenant. Use this to send a notification. Each call starts a new workflow run, so calling it again sends again.
+parameters:
+  - name: workflow
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Workflow Slug
+    human_description:
+      en_US: In the SuprSend dashboard, open Workflows and copy the workflow's slug, for example order-shipped.
+    llm_description: Slug of the SuprSend workflow to trigger, for example order-shipped.
+  - name: distinct_id
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: User Distinct ID
+    human_description:
+      en_US: The unique ID of the user in your system.
+    llm_description: Unique ID of the user who should receive the notification.
+  - name: data
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Data (JSON)
+    human_description:
+      en_US: 'Variables used in the workflow templates, as a JSON object, for example {"order_id": "123"}.'
+    llm_description: 'Template variables as a JSON object string, for example {"order_id": "123"}.'
+  - name: emails
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Emails
+    human_description:
+      en_US: Comma-separated email addresses of the user.
+    llm_description: Comma-separated email addresses of the user, if known.
+  - name: phones
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Phone Numbers
+    human_description:
+      en_US: Comma-separated phone numbers in international format, for example +14155550123.
+    llm_description: Comma-separated phone numbers in international format, if known.
+  - name: tenant_id
+    type: string
+    required: false
+    form: form
+    label:
+      en_US: Tenant ID
+    human_description:
+      en_US: Send with this tenant's branding and preferences.
+extra:
+  python:
+    source: tools/trigger_workflow.py

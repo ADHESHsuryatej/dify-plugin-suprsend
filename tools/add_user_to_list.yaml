@@ -1,0 +1,31 @@
+identity:
+  name: add_user_to_list
+  author: adheshsuryatej
+  label:
+    en_US: Add User to List
+description:
+  human:
+    en_US: Add a user to a SuprSend list.
+  llm: Adds one user (by distinct ID) to a SuprSend subscriber list so they receive broadcasts sent to that list. Use Create or Update User first if the user may not exist yet. Safe to repeat.
+parameters:
+  - name: list_id
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: List ID
+    human_description:
+      en_US: In the SuprSend dashboard, open Lists and copy the list ID. Built-in read-only lists such as All Subscribers can't be added to.
+    llm_description: ID of the SuprSend subscriber list.
+  - name: distinct_id
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: User Distinct ID
+    human_description:
+      en_US: The unique ID of the user in your system.
+    llm_description: Unique ID of the user to add.
+extra:
+  python:
+    source: tools/add_user_to_list.py

@@ -1,0 +1,67 @@
+identity:
+  name: upsert_user
+  author: adheshsuryatej
+  label:
+    en_US: Create or Update User
+description:
+  human:
+    en_US: Create a user in SuprSend, or update them if they already exist.
+  llm: Creates or updates a SuprSend user keyed by distinct ID, setting name, emails, phone numbers, timezone and custom properties. Use this to save a user profile before sending; it sends no notification. Safe to repeat with the same inputs.
+parameters:
+  - name: distinct_id
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: User Distinct ID
+    human_description:
+      en_US: The unique ID of the user in your system.
+    llm_description: Unique ID of the user to create or update.
+  - name: name
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Name
+    human_description:
+      en_US: The user's name.
+    llm_description: The user's full name.
+  - name: emails
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Emails
+    human_description:
+      en_US: Comma-separated email addresses.
+    llm_description: Comma-separated email addresses of the user.
+  - name: phones
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Phone Numbers
+    human_description:
+      en_US: Comma-separated phone numbers in international format, for example +14155550123.
+    llm_description: Comma-separated phone numbers in international format.
+  - name: timezone
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Timezone
+    human_description:
+      en_US: IANA timezone name, for example America/New_York.
+    llm_description: IANA timezone name, for example America/New_York.
+  - name: properties
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Custom Properties (JSON)
+    human_description:
+      en_US: 'Extra properties to store on the user, as a JSON object, for example {"plan": "pro"}.'
+    llm_description: 'Extra user properties as a JSON object string, for example {"plan": "pro"}.'
+extra:
+  python:
+    source: tools/upsert_user.py
