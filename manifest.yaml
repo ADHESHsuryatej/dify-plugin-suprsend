@@ -24,6 +24,8 @@ meta:
     version: '3.12'
     entrypoint: main
 privacy: PRIVACY.md
+repo: https://github.com/ADHESHsuryatej/dify-plugin-suprsend
+contact: support@suprsend.com
 tags:
   - social
   - business
